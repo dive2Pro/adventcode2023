@@ -1,3 +1,5 @@
+import { Comment } from "./comment";
+
 const inputs = `13399
 13677
 11945
@@ -2258,5 +2260,16 @@ export function Day1() {
     return evl.split("\n").reduce((p, c) => +p + Number(c), 0);
   });
   const max = Math.max(...ary);
-  return <div>Day1's answer = {max}</div>;
+  const top3 = ary.sort((a, b) => b - a).slice(0, 3);
+  return (
+    <div className="answer">
+      <h4>Day1's answer </h4>
+      total ={max}
+      top3 total = {top3.join("+")} = {top3.reduce((a, b) => a + b)}
+      <br />
+      <Comment>
+        note: 现在要找到的是前面三个最大量的, 最简单的是走排序, 然后取前面三个值
+      </Comment>
+    </div>
+  );
 }
