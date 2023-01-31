@@ -333,7 +333,6 @@ export function Day3() {
   for (let i = 0; i <= ary.length - 3; i += 3) {
     ary2.push(ary.slice(i, i + 3));
   }
-  console.log(ary2);
   const result2 = ary2.map((strAry) => {
     const map = strAry.reduce((p, c) => {
       const map = p.split("").reduce((p1, c1) => {
@@ -346,12 +345,10 @@ export function Day3() {
           map2[c1] = 1;
         }
       });
-      console.log(map2, " = map ");
       return Object.keys(map2).join("");
     });
     return map;
   });
-  console.log(result2);
   const total2 = result2.map((v) => list[v]).reduce((p, c) => p + c);
 
   return (
