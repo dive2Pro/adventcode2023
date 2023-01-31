@@ -1,4 +1,4 @@
-import { Comment } from "./comment";
+import { Comment } from "../comment";
 
 const inputs = `13399
 13677
