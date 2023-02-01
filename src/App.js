@@ -4,6 +4,7 @@ import { Day2 } from "./2022/day2";
 import { Day3 } from "./2022/day3";
 import { Day4 } from "./2022/day4";
 import { Day5 } from "./2022/day5";
+import { Day6 } from "./2022/day6";
 import "./styles.css";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       <Day3 />
       <Day4 />
       <Day5 />
+      <Day6 />
     </div>
   );
 }
