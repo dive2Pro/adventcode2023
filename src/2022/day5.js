@@ -527,8 +527,7 @@ move 1 from 1 to 2`;
 
 export function Day5() {
   const ary = [];
-  const result1 = [];
-  const result2 = [];
+  const ary2 = [];
   const reg = /\[(\w)\]/gi;
   const actionIndex = inputs.indexOf("move");
   const stackString = inputs.slice(0, actionIndex);
@@ -548,47 +547,24 @@ export function Day5() {
     actions.push(result.slice(1, 4));
     result = actionReg.exec(actionString);
   }
-  actions.slice(0).forEach(([size, from, to], index) => {
-    let beforeFrom = ary[from].join("");
-    let beforeTo = ary[to].join("");
-    if (size > ary[from].length) {
-      console.log(index);
-      throw new Error("Aha");
-    }
-    const items = ary[from].splice(0, size);
-    ary[to].unshift(...items.reverse());
-    let afterFrom = ary[from].join("");
-    let afterTo = ary[to].join("");
-    if (
-      beforeFrom.length + beforeTo.length !==
-      afterFrom.length + afterTo.length
-    ) {
-      throw new Error("ggg");
-    }
-    console.log(
-      [from, to, size],
-      beforeFrom,
-      "-",
-      beforeTo,
-      "-",
 
-      afterFrom,
-      "-",
-
-      afterTo,
-      " change ",
-      JSON.stringify(ary)
-    );
+  const result1 = structuredClone(ary);
+  const result2 = structuredClone(ary);
+  actions.forEach(([size, from, to], index) => {
+    const items = result1[from].splice(0, size);
+    result1[to].unshift(...items.reverse());
   });
-  console.log(ary, " = ary ");
-
+  actions.forEach(([size, from, to], index) => {
+    const items = result2[from].splice(0, size);
+    result2[to].unshift(...items);
+  });
   return (
     <div className="answer">
       <h4>Day5's answer</h4>
       <h5>Part 1</h5>
-      total = {ary.map((item) => item[0]).join("")}
+      total = {result1.map((item) => item[0]).join("")}
       <h5>Part 2</h5>
-      total = {ary.length - result2.length}
+      total = {result2.map((item) => item[0]).join("")}
     </div>
   );
 }
